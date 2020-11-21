@@ -295,6 +295,27 @@ boards = collections.OrderedDict([
                   'Note that since ESP8285 has SPI flash memory internally connected in DOUT mode, pins 9 and 10 may be used as GPIO / I2C / PWM pins.',
                   ],
     }),
+    ( 'esp8266_esp01', {
+        'name': 'ESP8266-01 (ESP-01) (Blue or Black Board)',
+        'opts': {
+            '.build.board': 'ESP8266_ESP01',
+            '.build.variant': 'esp8266_esp01',
+            '.build.led': '-DLED_BUILTIN=2',
+            '.upload.resetmethod': '--before default_reset --after hard_reset',
+            '.build.flash_mode': 'dout',
+            '.build.flash_flags': '-DFLASHMODE_DOUT',
+            '.build.extra_flags': '-DF_CRYSTAL=26000000 -DESP8266',
+            '.build.flash_freq': '40',
+            },
+        'macro': [
+            '1M', '512K',
+            'sdk',
+            ],
+        'desc': [ 'ESP8285 (`datasheet <http://www.espressif.com/sites/default/files/0a-esp8285_datasheet_en_v1.0_20160422.pdf>`__) is a multi-chip package which contains ESP8266 and 1MB flash. All points related to bootstrapping resistors and recommended circuits listed above apply to ESP8285 as well.',
+                  '',
+                  'Note that since ESP8285 has SPI flash memory internally connected in DOUT mode, pins 9 and 10 may be used as GPIO / I2C / PWM pins.',
+                  ],
+    }),
     ( 'espduino', {
         'name': 'ESPDuino (ESP-13 Module)',
         'opts': collections.OrderedDict([
